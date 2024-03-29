@@ -1,0 +1,92 @@
+body {
+  background-color: rgba(0, 35, 50, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 0;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 1rem;
+}
+.info {
+}
+
+header {
+  padding: 0.5rem 1.5rem;
+  font-size: 110%;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+input[type="number"] {
+  text-align: center;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#weeks-left {
+  color: rgb(255, 105, 105);
+}
+main {
+  display: grid;
+  margin: 1rem;
+  justify-items: center;
+}
+#life {
+  display: grid;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+
+  grid-template-columns: repeat(52, 1fr);
+  background-color: rgb(100, 100, 100);
+
+  gap: 0.5px;
+  grid-area: life;
+  border-radius: 5px;
+}
+.week-box {
+  --week-box-size: 0.35rem;
+
+  background-color: white;
+  width: var(--week-box-size);
+  height: var(--week-box-size);
+
+  /* border-radius: 50%; */
+}
+.lived {
+  background-color: rgb(100, 100, 100);
+  /* border: 1px black solid;
+  box-sizing: border-box; */
+}
+.lived-this-year {
+  background-color: rgb(155, 0, 0);
+}
+span {
+  color: rgb(255, 105, 105);
+}
+h1 {
+  padding: none;
+}
+h2 {
+  width: fit-content;
+}
+#this-year {
+  grid-area: this-year;
+  margin: 0;
+}
+#next-decade {
+  grid-area: next-decade;
+  margin: 0;
+}
+@media screen and (max-width: 800px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template:
+      "header"
+      "next-decade"
+      "this-year"
+      "life";
+  }
+}

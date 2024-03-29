@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>New Tab</title>
+  </head>
+  <body>
+    <header>
+      <h1>Make it Count</h1>
+      <h2 class="info">Weeks Left: <span id="weeks-left"></span></h2>
+      <div id="next-decade">
+        <h2 class="info">
+          <span id="weeks-until-next-decade-age"></span> weeks until you turn
+          <span id="next-decade-age"></span>.
+        </h2>
+      </div>
+      <div id="this-year">
+        <h2 class="info">
+          <span id="weeks-left-this-year"></span> weeks left this year.
+        </h2>
+      </div>
+    </header>
+    <input
+      type="number"
+      name="birthyear"
+      id="birthyear"
+      placeholder="Enter birth year"
+    />
+    <main>
+      <div id="life"></div>
+    </main>
+    <script src="script.js" defer></script>
+  </body>
+</html>
