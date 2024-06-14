@@ -1,23 +1,33 @@
 body {
-  background-color: rgba(0, 35, 50, 0.6);
+  background-color: rgb(0, 58, 79);
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
+  flex-direction: row;
+  align-items: top;
+  justify-content: center;
   margin: 0;
+  gap: 1em;
   color: white;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  padding: 1rem;
+  font-family: monospace;
+  font-size: 1rem;
+  padding: 1em;
+  --shadow: 0 0 5px 0 rgba(93, 169, 176, 0.77);
+  --border-size: 0.08em;
+  --border-type: solid;
+  --red: rgb(255, 105, 105);
+  --yellow: rgb(255, 235, 107);
+  --radius: 10px;
 }
 .info {
 }
 
 header {
-  padding: 0.5rem 1.5rem;
-  font-size: 110%;
-  border-radius: 5px;
+  padding: 0.5em 1.5em;
+  color: rgba(205, 205, 205, 0.76);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  width: max-content;
   background-color: rgba(0, 0, 0, 0.5);
+  height: fit-content;
 }
 input[type="number"] {
   text-align: center;
@@ -27,47 +37,57 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-#weeks-left {
-  color: rgb(255, 105, 105);
-}
+
 main {
   display: grid;
-  margin: 1rem;
   justify-items: center;
+  border-radius: var(--radius);
 }
 #life {
   display: grid;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-
+  box-shadow: var(--shadow);
   grid-template-columns: repeat(52, 1fr);
-  background-color: rgb(100, 100, 100);
-
-  gap: 0.5px;
   grid-area: life;
-  border-radius: 5px;
+  border-radius: var(--radius);
+  max-height: 95vh;
+}
+.week-box:first-child {
+  /* Your styles here */
+  border-radius: var(--radius) 0 0 0;
+}
+#life .week-box:last-child {
+  /* Your styles here */
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.week-box:nth-child(52) {
+  /* Your styles here */
+  border-radius: 0 var(--radius) 0 0;
 }
 .week-box {
-  --week-box-size: 0.35rem;
-
+  --week-box-size: 0.45em;
+  border: var(--border-size) var(--border-type) rgb(235, 235, 235);
   background-color: white;
-  width: var(--week-box-size);
+  width: calc(var(--week-box-size) + 1px);
   height: var(--week-box-size);
-
-  /* border-radius: 50%; */
 }
 .lived {
-  background-color: rgb(100, 100, 100);
-  /* border: 1px black solid;
-  box-sizing: border-box; */
+  background-color: rgba(22, 22, 22, 1);
+  border: var(--border-size) rgb(38, 35, 35) var(--border-type);
 }
 .lived-this-year {
-  background-color: rgb(155, 0, 0);
+  background-color: rgb(200, 0, 0);
+  border: var(--border-size) rgb(190, 0, 0) var(--border-type);
 }
 span {
-  color: rgb(255, 105, 105);
+  color: var(--yellow);
+  font-size: 120%;
 }
 h1 {
   padding: none;
+  font-size: 2em;
+  text-align: center;
+  color: white;
 }
 h2 {
   width: fit-content;
@@ -80,13 +100,20 @@ h2 {
   grid-area: next-decade;
   margin: 0;
 }
-@media screen and (max-width: 800px) {
-  main {
-    grid-template-columns: 1fr;
-    grid-template:
-      "header"
-      "next-decade"
-      "this-year"
-      "life";
+@media screen and (max-width: 1100px) {
+  body {
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    font-size: 1em;
   }
+}
+.flash {
+  color: rgb(255, 235, 107);
+}
+.top-right {
+  border-radius: var(--radius);
+}
+.bottom-left {
+  border-radius: 0 0 0 var(--radius);
 }

@@ -8,6 +8,7 @@ function createEl(type, clss = "", id = "") {
   }
   return el;
 }
+
 const body = document.querySelector("body");
 const lifeDiv = document.querySelector("#life");
 const lifeGrid = createEl("div", (id = "life-grid"));
@@ -17,7 +18,7 @@ const weeksUntilNextDecadeAgeSpan = document.querySelector(
 );
 const nextDecadeAgeSpan = document.querySelector("#next-decade-age");
 const weeksLeftThisYearSpan = document.querySelector("#weeks-left-this-year");
-
+const weeksLeft = document.querySelector("#weeks-left");
 const expectedLifeSpanWeeks = 83 * 52;
 
 const getBirthYear = () => {
@@ -44,6 +45,15 @@ const generateWeekDivs = () => {
   for (let j = 0; j < expectedLifeSpanWeeks; j++) {
     const weekBox = createEl("div", (clss = "week-box"));
     lifeDiv.appendChild(weekBox);
+    if (j === 51) {
+      weekBox.classList.add("top-right");
+    }
+    if (j === expectedLifeSpanWeeks - 1) {
+      weekBox.classList.add("bottom-right");
+    }
+    if (j === expectedLifeSpanWeeks - 52) {
+      weekBox.classList.add("bottom-left");
+    }
   }
 };
 
@@ -55,9 +65,7 @@ const fillElapsedWeeks = (ageInWeeks = 10) => {
   for (let i = ageInWeeks - thisYearElapsedWeeks; i < ageInWeeks; i++) {
     lifeDiv.childNodes[i].classList = "week-box lived-this-year";
   }
-  document.querySelector("#weeks-left").textContent = `${
-    expectedLifeSpanWeeks - ageInWeeks
-  }`;
+  weeksLeft.textContent = `${expectedLifeSpanWeeks - ageInWeeks}`;
 };
 const updateUI = () => {
   const dateNow = new Date();
@@ -93,3 +101,19 @@ const run = () => {
 };
 
 run();
+
+const flashableEls = [
+  nextDecadeAgeSpan,
+  weeksLeftThisYearSpan,
+  weeksUntilNextDecadeAgeSpan,
+  weeksLeft,
+];
+
+// flashableEls.forEach((el, index) => {
+//   const timing = 200;
+//   setTimeout(() => {
+//     setInterval(() => {
+//       el.classList.toggle("flash");
+//     }, flashableEls.length * timing);
+//   }, index * flashableEls.length * timing);
+// });
