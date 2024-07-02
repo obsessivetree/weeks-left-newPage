@@ -10,6 +10,7 @@ body {
   font-family: monospace;
   font-size: 1rem;
   padding: 1em;
+  height: 100vh
   --shadow: 0 0 5px 0 rgba(93, 169, 176, 0.77);
   --border-size: 0.08em;
   --border-type: solid;
@@ -49,7 +50,7 @@ main {
   grid-template-columns: repeat(52, 1fr);
   grid-area: life;
   border-radius: var(--radius);
-  max-height: 95vh;
+  max-height: calc(100vh-2em);
 }
 .week-box:first-child {
   /* Your styles here */
@@ -65,19 +66,26 @@ main {
   border-radius: 0 var(--radius) 0 0;
 }
 .week-box {
-  --week-box-size: 0.45em;
+  --min-week-box-size: 0.3em;
+  --week-box-size: 0.43em;
+  --max-week-box-size: 0.6em;
   border: var(--border-size) var(--border-type) rgb(235, 235, 235);
   background-color: white;
   width: calc(var(--week-box-size) + 1px);
+  
   height: var(--week-box-size);
+  min-height: var(--min-week-box-size);
+  max-height: var(--max-week-box-size);
 }
 .lived {
   background-color: rgba(22, 22, 22, 1);
   border: var(--border-size) rgb(38, 35, 35) var(--border-type);
+
 }
 .lived-this-year {
   background-color: rgb(200, 0, 0);
   border: var(--border-size) rgb(190, 0, 0) var(--border-type);
+  
 }
 span {
   color: var(--yellow);
