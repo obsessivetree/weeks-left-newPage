@@ -44,7 +44,11 @@ const getElapsedWeeks = (birthYear = 1996) => {
 const generateWeekDivs = () => {
   for (let j = 0; j < expectedLifeSpanWeeks; j++) {
     const weekBox = createEl("div", (clss = "week-box"));
-    lifeDiv.appendChild(weekBox);
+    const decade = Math.floor(j / 520);
+    console.log(decade, j);
+    if (decade % 2 === 0) {
+      weekBox.classList.add("decade-shader");
+    }
     if (j === 51) {
       weekBox.classList.add("top-right");
     }
@@ -54,6 +58,7 @@ const generateWeekDivs = () => {
     if (j === expectedLifeSpanWeeks - 52) {
       weekBox.classList.add("bottom-left");
     }
+    lifeDiv.appendChild(weekBox);
   }
 };
 

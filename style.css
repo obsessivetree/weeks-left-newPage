@@ -10,21 +10,22 @@ body {
   font-family: monospace;
   font-size: 1rem;
   padding: 1em;
-  height: 100vh
-  --shadow: 0 0 5px 0 rgba(93, 169, 176, 0.77);
   --border-size: 0.08em;
   --border-type: solid;
+  --border-color: rgb(250, 250, 250);
+  --box-color: white;
+  --box2-color: rgb(240, 240, 240);
+  --border2-color: rgb(235, 235, 235);
+  --lived-box-color: black;
   --red: rgb(255, 105, 105);
-  --yellow: rgb(255, 235, 107);
+  --yellow: rgb(255, 244, 176);
   --radius: 10px;
-}
-.info {
 }
 
 header {
   padding: 0.5em 1.5em;
-  color: rgba(205, 205, 205, 0.76);
-  box-shadow: var(--shadow);
+  color: rgba(228, 228, 228, 0.76);
+  /* box-shadow: var(--shadow); */
   border-radius: var(--radius);
   width: max-content;
   background-color: rgba(0, 0, 0, 0.5);
@@ -46,7 +47,7 @@ main {
 }
 #life {
   display: grid;
-  box-shadow: var(--shadow);
+  /* box-shadow: var(--shadow); */
   grid-template-columns: repeat(52, 1fr);
   grid-area: life;
   border-radius: var(--radius);
@@ -69,23 +70,24 @@ main {
   --min-week-box-size: 0.3em;
   --week-box-size: 0.43em;
   --max-week-box-size: 0.6em;
-  border: var(--border-size) var(--border-type) rgb(235, 235, 235);
-  background-color: white;
+  border: var(--border-size) var(--border-type) var(--border-color);
+  background-color: var(--box-color);
   width: calc(var(--week-box-size) + 1px);
-  
   height: var(--week-box-size);
   min-height: var(--min-week-box-size);
   max-height: var(--max-week-box-size);
 }
+.decade-shader {
+  background-color: var(--box2-color) !important;
+  border-color: var(--border2-color) !important;
+}
 .lived {
   background-color: rgba(22, 22, 22, 1);
-  border: var(--border-size) rgb(38, 35, 35) var(--border-type);
-
+  border: var(--border-size) rgba(38, 35, 35, 0.201) var(--border-type);
 }
 .lived-this-year {
   background-color: rgb(200, 0, 0);
   border: var(--border-size) rgb(190, 0, 0) var(--border-type);
-  
 }
 span {
   color: var(--yellow);
@@ -95,10 +97,11 @@ h1 {
   padding: none;
   font-size: 2em;
   text-align: center;
-  color: white;
+  color: rgb(255, 241, 238);
 }
 h2 {
   width: fit-content;
+  font-size: 1.3em;
 }
 #this-year {
   grid-area: this-year;
