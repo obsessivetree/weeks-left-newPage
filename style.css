@@ -1,3 +1,10 @@
+.doto-font {
+  font-family: "Doto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "ROND" 0;
+}
 body {
   background-color: rgb(0, 58, 79);
   display: flex;
@@ -7,19 +14,30 @@ body {
   margin: 0;
   gap: 1em;
   color: white;
-  font-family: monospace;
+  font-family: sans-serif;
   font-size: 1rem;
   padding: 1em;
   --border-size: 0.08em;
   --border-type: solid;
   --border-color: rgb(250, 250, 250);
-  --box-color: white;
+  --box-color: rgb(255, 255, 255);
   --box2-color: rgb(240, 240, 240);
   --border2-color: rgb(235, 235, 235);
   --lived-box-color: black;
+  --lived-decade-number-color: rgba(255, 255, 255, 0.02);
+  --current-decade-number-color: rgba(159, 255, 148, 0.2);
   --red: rgb(255, 105, 105);
   --yellow: rgb(255, 244, 176);
+  --gray: rgb(227, 227, 227);
+  --gray2: rgb(255, 255, 255);
   --radius: 10px;
+}
+.special-font {
+  font-family: "Doto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "ROND" 0;
 }
 
 header {
@@ -30,6 +48,7 @@ header {
   width: max-content;
   background-color: rgba(0, 0, 0, 0.5);
   height: fit-content;
+  font-family: monospace;
 }
 input[type="number"] {
   text-align: center;
@@ -43,29 +62,28 @@ input::-webkit-inner-spin-button {
 main {
   display: grid;
   justify-items: center;
-  border-radius: var(--radius);
+  /* border-radius: var(--radius); */
 }
-#life {
+
+/* .week-box:first-child {
+  border-radius: var(--radius) 0 0 0;
+}
+
+.week-box:nth-child(52) {
+  border-radius: 0 var(--radius) 0 0;
+} */
+
+.decade {
   display: grid;
   /* box-shadow: var(--shadow); */
   grid-template-columns: repeat(52, 1fr);
   grid-area: life;
-  border-radius: var(--radius);
+  /* border-radius: var(--radius); */
   max-height: calc(100vh-2em);
-}
-.week-box:first-child {
-  /* Your styles here */
-  border-radius: var(--radius) 0 0 0;
-}
-#life .week-box:last-child {
-  /* Your styles here */
-  border-radius: 0 0 var(--radius) 0;
+  /* background-color: var(--box-color); */
+  position: relative;
 }
 
-.week-box:nth-child(52) {
-  /* Your styles here */
-  border-radius: 0 var(--radius) 0 0;
-}
 .week-box {
   --min-week-box-size: 0.3em;
   --week-box-size: 0.43em;
@@ -77,25 +95,27 @@ main {
   min-height: var(--min-week-box-size);
   max-height: var(--max-week-box-size);
 }
-.decade-shader {
-  background-color: var(--box2-color) !important;
-  border-color: var(--border2-color) !important;
+
+.decade-shader .week-box {
+  background-color: var(--box2-color);
+  border-color: var(--border2-color);
 }
 .lived {
-  background-color: rgba(22, 22, 22, 1);
-  border: var(--border-size) rgba(38, 35, 35, 0.201) var(--border-type);
+  background-color: rgba(22, 22, 22, 1) !important;
+  border: var(--border-size) rgba(38, 35, 35, 0.201) var(--border-type) !important;
 }
 .lived-this-year {
-  background-color: rgb(200, 0, 0);
-  border: var(--border-size) rgb(190, 0, 0) var(--border-type);
+  background-color: rgb(200, 0, 0) !important;
+  border: var(--border-size) rgb(190, 0, 0) var(--border-type) !important;
 }
 span {
   color: var(--yellow);
   font-size: 120%;
+  font-family: "Doto", sans-serif;
 }
 h1 {
   padding: none;
-  font-size: 2em;
+  font-size: 3em;
   text-align: center;
   color: rgb(255, 241, 238);
 }
@@ -120,11 +140,44 @@ h2 {
   }
 }
 .flash {
-  color: rgb(255, 235, 107);
+  color: rgb(255, 164, 45);
+  /* transition: color 0.1s ease-in-out; */
+}
+
+.top-left {
+  border-radius: var(--radius) 0 0 0;
 }
 .top-right {
-  border-radius: var(--radius);
+  border-radius: 0 var(--radius) 0 0;
 }
 .bottom-left {
   border-radius: 0 0 0 var(--radius);
+}
+.bottom-right {
+  border-radius: 0 0 var(--radius) 0;
+}
+
+.decade-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 5em;
+  /* font-family: "Doto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal; */
+  font-variation-settings: "ROND" 0;
+  color: var(--gray);
+  /* z-index: -1; */
+}
+.decade-shader .decade-number {
+  color: var(--gray2);
+}
+.decade-lived {
+  color: var(--lived-decade-number-color) !important;
+}
+.current-decade {
+  color: var(--current-decade-number-color) !important;
 }
