@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "My Extension",
+  "name": "Weeks Left New Tab",
   "version": "1.0.1",
 
   "description": "'weeks left' new tab page",

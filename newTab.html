@@ -16,27 +16,48 @@
   <body>
     <header>
       <h1>DEATH AWAITS</h1>
-      <h2 class="info" id="total-weeks-left">
-        <span id="weeks-left"></span> weeks left.
-      </h2>
-      <div id="next-decade">
-        <h2 class="info">
-          <span id="weeks-until-next-decade-age"></span> weeks until the year
-          you turn <span id="next-decade-age"></span>.
+      <div id="header-content" class="invisible">
+        <h2 class="info" id="total-weeks-left">
+          <span id="weeks-left"></span> weeks left.
         </h2>
+        <div id="next-decade">
+          <h2 class="info">
+            <span id="weeks-until-next-decade-age"></span> weeks until the year
+            you turn <span id="next-decade-age"></span>.
+          </h2>
+        </div>
+        <div id="this-year">
+          <h2 class="info">
+            <span id="weeks-left-this-year"></span> weeks left this year.
+          </h2>
+        </div>
       </div>
-      <div id="this-year">
-        <h2 class="info">
-          <span id="weeks-left-this-year"></span> weeks left this year.
-        </h2>
-      </div>
+      <form id="form" onsubmit="return false;">
+        <label>Country of Residence:</label>
+        <select name="country" id="country">
+          <option value="">US</option>
+        </select>
+        <label>Enter your sex:</label>
+        <label for="male">
+          <input type="radio" name="sex" id="male" />
+          male
+        </label>
+        <label for="female">
+          <input type="radio" name="sex" id="female" />
+          female
+        </label>
+        <label for="birthyear">Enter your birthday:</label>
+        <input
+          type="date"
+          name="birthyear"
+          id="birthyear"
+          required
+          autocomplete="bday"
+          autofocus="true"
+        />
+        <button type="submit">Submit</button>
+      </form>
     </header>
-    <input
-      type="number"
-      name="birthyear"
-      id="birthyear"
-      placeholder="Enter birth year"
-    />
     <main>
       <div id="life"></div>
     </main>

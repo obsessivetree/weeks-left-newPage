@@ -5,7 +5,11 @@
   font-style: normal;
   font-variation-settings: "ROND" 0;
 }
+.invisible {
+  display: none;
+}
 body {
+  box-sizing: border-box;
   background-color: rgb(0, 58, 79);
   display: flex;
   flex-direction: row;
@@ -25,12 +29,17 @@ body {
   --border2-color: rgb(235, 235, 235);
   --lived-box-color: black;
   --lived-decade-number-color: rgba(255, 255, 255, 0.02);
-  --current-decade-number-color: rgba(159, 255, 148, 0.2);
+  --current-decade-number-color: rgba(0, 127, 173, 0.884);
   --red: rgb(255, 105, 105);
   --yellow: rgb(255, 244, 176);
-  --gray: rgb(227, 227, 227);
+  --gray: rgb(231, 231, 231);
   --gray2: rgb(255, 255, 255);
   --radius: 10px;
+  --min-week-box-size: 0.3rem;
+  --week-box-height: 0.43rem;
+  --week-box-width: calc(var(--week-box-height) + 1px);
+  --max-week-box-size: 0.6rem;
+  --birth-week-color: rgba(255, 255, 255, 0.839);
 }
 .special-font {
   font-family: "Doto", sans-serif;
@@ -45,7 +54,7 @@ header {
   color: rgba(228, 228, 228, 0.76);
   /* box-shadow: var(--shadow); */
   border-radius: var(--radius);
-  width: max-content;
+  /* width: calc(52 * var(--week-box-width)); */
   background-color: rgba(0, 0, 0, 0.5);
   height: fit-content;
   font-family: monospace;
@@ -85,13 +94,10 @@ main {
 }
 
 .week-box {
-  --min-week-box-size: 0.3em;
-  --week-box-size: 0.43em;
-  --max-week-box-size: 0.6em;
   border: var(--border-size) var(--border-type) var(--border-color);
   background-color: var(--box-color);
-  width: calc(var(--week-box-size) + 1px);
-  height: var(--week-box-size);
+  width: var(--week-box-width);
+  height: var(--week-box-height);
   min-height: var(--min-week-box-size);
   max-height: var(--max-week-box-size);
 }
@@ -104,6 +110,15 @@ main {
   background-color: rgba(22, 22, 22, 1) !important;
   border: var(--border-size) rgba(38, 35, 35, 0.201) var(--border-type) !important;
 }
+.unconciously-lived {
+  background-color: rgba(22, 22, 22, 0.5) !important;
+  border: var(--border-size) rgba(38, 35, 35, 0.201) var(--border-type) !important;
+}
+.birth-week {
+  background-color: var(--birth-week-color) !important;
+  border: var(--border-size) var(--birth-week-color) var(--border-type) !important;
+}
+
 .lived-this-year {
   background-color: rgb(200, 0, 0) !important;
   border: var(--border-size) rgb(190, 0, 0) var(--border-type) !important;
@@ -137,6 +152,32 @@ h2 {
     align-items: center;
     justify-content: top;
     font-size: 1em;
+    --week-box-height: 0.36rem;
+    --week-box-width: calc(var(--week-box-height) + 1px);
+  }
+  header {
+    --pre: calc(0.08rem + var(--week-box-width));
+    --width: calc(var(--pre) * 52);
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+    width: var(--width);
+  }
+  h1 {
+    font-size: 2em;
+  }
+  h2 {
+    font-size: 1em;
+  }
+  #next-decade {
+    display: none;
+  }
+  #this-year {
+    display: none;
+  }
+  .decade-number {
+    font-size: 3.5em !important;
   }
 }
 .flash {
@@ -159,16 +200,17 @@ h2 {
 
 .decade-number {
   position: absolute;
+  padding: 0 1rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 5em;
+  font-size: 4.5em;
   /* font-family: "Doto", sans-serif;
   font-optical-sizing: auto;
   font-weight: 500;
-  font-style: normal; */
-  font-variation-settings: "ROND" 0;
+  font-style: normal; 
+  font-variation-settings: "ROND" 0;*/
   color: var(--gray);
   /* z-index: -1; */
 }
